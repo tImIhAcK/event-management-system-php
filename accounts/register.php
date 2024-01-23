@@ -1,5 +1,5 @@
 <?php
-include '../../includes/constants.php';
+include '../includes/constants.php';
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +9,7 @@ include '../../includes/constants.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EMS - Login</title>
-    <link rel="stylesheet" href="../../assets/css/account_style.css">
+    <link rel="stylesheet" href="../assets/css/account_style.css">
 </head>
 
 <body>
@@ -28,9 +28,8 @@ include '../../includes/constants.php';
             <p><a href="#">Forgot password</a></p>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="../../assets/js/register.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../assets/js/register.js"></script>
 </body>
 
 </html>

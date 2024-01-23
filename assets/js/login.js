@@ -4,11 +4,11 @@ jQuery(document).ready(function ($) {
 
     var formData = $(this).serialize();
     var formResponse = $("#response");
-    console.log(formData);
+    // console.log(formData);
 
     $.ajax({
       type: "POST",
-      url: "../../includes/login.inc.php",
+      url: "../event-management-system/includes/login.inc.php",
       data: formData,
       beforeSend: function () {
         message = "<div class='loading'><p>Loading...</p></div>";
@@ -21,7 +21,7 @@ jQuery(document).ready(function ($) {
           formResponse.html(message);
 
           setTimeout(function () {
-            window.location.href = "../../views/home.php";
+            window.location.href = "../../index.php";
           }, 3000);
         } else {
           message = "<div class='error'>" + response.data.message + "</div>";
