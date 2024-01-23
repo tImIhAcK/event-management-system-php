@@ -8,7 +8,7 @@ jQuery(document).ready(function ($) {
 
     $.ajax({
       type: "POST",
-      url: "../event-management-system/includes/login.inc.php",
+      url: "../includes/login.inc.php",
       data: formData,
       beforeSend: function () {
         message = "<div class='loading'><p>Loading...</p></div>";
@@ -21,7 +21,7 @@ jQuery(document).ready(function ($) {
           formResponse.html(message);
 
           setTimeout(function () {
-            window.location.href = "../../index.php";
+            window.location.href = "../";
           }, 3000);
         } else {
           message = "<div class='error'>" + response.data.message + "</div>";
