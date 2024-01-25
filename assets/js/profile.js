@@ -2,9 +2,7 @@ jQuery(document).ready(function ($) {
   $("#form").on("submit", function (e) {
     e.preventDefault();
 
-    var formData = $(this).serialize();
-    // var formResponse = $("#response");
-    console.log(formData);
+    let formData = $(this).serialize();
 
     $.ajax({
       type: "POST",
@@ -37,9 +35,6 @@ jQuery(document).ready(function ($) {
       },
       complete: function () {
         console.log("Completed");
-        // setTimeout(function () {
-        //   formResponse.html("");
-        // }, 10000);
       },
     });
   });

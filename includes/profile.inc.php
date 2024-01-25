@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $phoneRegex = $phoneRegex = '/^(\+\d{11}|\d{11})$/';
+    $phoneRegex = '/^(\+\d{11}|\d{11})$/';
 
     if (!preg_match($phoneRegex, $phone)) {
         header('Content-Type: application/json');
@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // Update user's fullname and phone in the database
     $conn = openDatabaseConnection();
 
     $userId = $_SESSION['user']['user_id'];
@@ -32,17 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = mysqli_query($conn, $query);
 
     if ($result) {
-        $user = mysqli_fetch_assoc($result);
-        $_SESSION['user'] = [
-            'user_id' => $user['id'],
-            'username' => $user['username'],
-            'email' => $user['email'],
-            'fullname' => $user['fullname'],
-            'phone' => $user['phone'],
-        ];
+        $_SESSION['user']['fullname'] = $fullname;
+        $_SESSION['user']['phone'] = $phone;
+
 
         header('Content-Type: application/json');
-        $response = array('data' => array('success' => true, 'message' => 'Profile update successfull'));
+        $response = array('data' => array('success' => true, 'message' => 'Profile update successfully'));
         echo json_encode($response);
         exit;
     } else {

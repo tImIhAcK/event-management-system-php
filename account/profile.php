@@ -13,9 +13,19 @@ if (!$_SESSION['user']) {
         <div class="col-md-4">
             <div class="card text-center sidebar">
                 <div class="card-body">
-                    <img src="../assets/images/blank-profile.png" alt="" class="rounded-circle" width="150">
+
+                    <?php
+                    $profileImage = '../assets/images/blank-profile.png';
+                    if (!empty($_SESSION['user']['profile_image'])) {
+                        $profileImage = $_SESSION['user']['profile_image'];
+                    }
+                    ?>
+                    <img src="<?php echo $profileImage ?>" alt="" class="rounded-circle" width="150">
                     <div class="mt-3">
                         <h3><?php echo $_SESSION['user']['username'] ?></h3>
+                        <form action="" method="post" id="profileImgForm" enctype="multipart/form-data">
+                            <input type="file" name="profile_image" id="profile_image" class="form-control-file">
+                        </form>
                         <div class="d-flex flex-column">
                             <a href="">Events</a>
                             <a href="">Change Password</a>
@@ -34,7 +44,8 @@ if (!$_SESSION['user']) {
                                 <h5>Fullname</h5>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" name="fullname" class="form-control" value="<?php echo $_SESSION['user']['fullname'] ?>">
+                                <input type="text" name="fullname" class="form-control"
+                                    value="<?php echo $_SESSION['user']['fullname'] ?>">
                             </div>
                         </div>
                         <div class="row">
@@ -58,7 +69,8 @@ if (!$_SESSION['user']) {
                                 <h5>Phone</h5>
                             </div>
                             <div class="col-md-9 text-secondary">
-                                <input type="text" name="phone" class="form-control" value="<?php echo $_SESSION['user']['phone'] ?>">
+                                <input type="text" name="phone" class="form-control"
+                                    value="<?php echo $_SESSION['user']['phone'] ?>">
                             </div>
                         </div>
                     </div>
