@@ -9,45 +9,54 @@ require "../includes/database.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Check if the file is uploaded successfully
-    if (!isset($_FILES['profile_image']) || $_FILES['profile_image']['error'] !== 0) {
-        header('Content-Type: application/json');
-        $response = array('data' => array('success' => false, 'message' => 'Invalid file upload'));
-        echo json_encode($response);
-        exit;
-    }
-
-    $image_name = $_FILES['profile_image']['name'];
-    $image_size = $_FILES['profile_image']['size'];
-    $image_tmp_name = $_FILES['profile_image']['tmp_name'];
-
-    if ($image_size > 5 * 1024 * 1024) {
-        header('Content-Type: application/json');
-        $response = array('data' => array('success' => false, 'message' => 'File is too large. Maximum is 5MB'));
-        echo json_encode($response);
-        exit;
-    }
-
-
-    $img_ex = pathinfo($image_name, PATHINFO_EXTENSION);
-    $img_ex = strtolower($img_ex);
-    $allowed_ex = array('png', 'jpg', 'jpeg');
-
-    if (!in_array($img_ex, $allowed_ex)) {
-        header('Content-Type: application/json');
-        $response = array('data' => array('success' => true, 'message' => 'File type not allowed'));
-        echo json_encode($response);
-        exit;
-    }
-
-    $new_img_name = uniqid("IMG-", true) . '.' . $img_ex;
-    $img_upload_path = BASE_URL . 'assets/uploads/profile__images' . $new_img_name;
-
-    $upload_directory =  BASE_URL . 'assets/uploads';
-    header('Content-Type: application/json');
-    $response = array('data' => array('success' => true, 'message' => is_dir($upload_directory)));
-    echo json_encode($response);
-    exit;
+    // if (!isset($_FILES['profile_image']) || $_FILES['profile_image']['error'] !== 0) {
+    //     header('Content-Type: application/json');
+    //     $response = array('data' => array('success' => false, 'message' => 'Invalid file upload'));
+    //     echo json_encode($response);
     //     exit;
+    // }
+
+    // $image_name = $_FILES['profile_image']['name'];
+    // $image_size = $_FILES['profile_image']['size'];
+    // $image_tmp_name = $_FILES['profile_image']['tmp_name'];
+
+    // if ($image_size > 5 * 1024 * 1024) {
+    //     header('Content-Type: application/json');
+    //     $response = array('data' => array('success' => false, 'message' => 'File is too large. Maximum is 5MB'));
+    //     echo json_encode($response);
+    //     exit;
+    // }
+
+
+    // $img_ex = pathinfo($image_name, PATHINFO_EXTENSION);
+    // $img_ex = strtolower($img_ex);
+    // $allowed_ex = array('png', 'jpg', 'jpeg');
+
+    // if (!in_array($img_ex, $allowed_ex)) {
+    //     header('Content-Type: application/json');
+    //     $response = array('data' => array('success' => true, 'message' => 'File type not allowed'));
+    //     echo json_encode($response);
+    //     exit;
+    // }
+
+    // $new_img_name = uniqid("IMG-", true) . '.' . $img_ex;
+    // $img_upload_path = BASE_URL . 'assets/uploads/profile__images' . $new_img_name;
+
+    $upload_directory =  BASE_URL . 'uploads/';
+
+    if (!is_dir($upload_directory)) {
+        header('Content-Type: application/json');
+        $response = array('data' => array('success' => false, 'message' => 'Folder does not exists'));
+        echo json_encode($response);
+        exit;
+    } else {
+        header('Content-Type: application/json');
+        $response = array('data' => array('success' => true, 'message' => 'Folder exists'));
+        echo json_encode($response);
+        exit;
+    }
+
+
     // if (!is_dir($upload_directory)) {
     //     mkdir($upload_directory, 0755, true);
     //     header('Content-Type: application/json');

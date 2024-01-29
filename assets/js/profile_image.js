@@ -1,10 +1,10 @@
 jQuery(document).ready(function ($) {
   $("#profileImgForm").on("change", function (e) {
     e.preventDefault();
-    let formData = new FormData();
-    let img = $("#profile_image")[0].files;
+    var formData = new FormData(this);
+    // let img = $("#profile_image")[0].files;
 
-    formData.append("profile_image", img[0]);
+    // formData.append("profile_image", img[0]);
     $.ajax({
       type: "POST",
       url: "../includes/profile_image.inc.php",
