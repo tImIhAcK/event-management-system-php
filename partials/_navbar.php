@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container">
-        <a class="navbar-brand" href="#">EMS</a>
+        <a class="navbar-brand" href="<?php echo BASE_URL; ?>">EMS</a>
         <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,20 +31,20 @@
                                 <i class="fa-regular fa-user me"></i> <?php echo $_SESSION['user']['username']; ?>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="./account/profile.php"><i class="fa-regular fa-address-card me-3"></i>Profile</a></li>
+                                <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>account/profile.php"><i class="fa-regular fa-address-card me-3"></i>Profile</a></li>
                                 <li><a class="dropdown-item" href="#"><i class="fa-regular fa-calendar-days me-3"></i>Book
                                         Event</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a href="./account/logout.php" class="btn btn-primary dropdown-item">Logout</a>
+                                <li><a href="<?php echo BASE_URL; ?>account/logout.php" class="btn btn-primary dropdown-item">Logout</a>
                                 </li>
                             </ul>
                         </li>
 
                     <?php else : ?>
-                        <a href="./account/login.php" class="btn btn-primary me-3">Login</a>
-                        <a href="./account/register.php" class="btn btn-outline-primary">Register</a>
+                        <a href="<?php echo BASE_URL; ?>account/login.php" class="btn btn-primary me-3">Login</a>
+                        <a href="<?php echo BASE_URL; ?>account/register.php" class="btn btn-outline-primary">Register</a>
                     <?php endif; ?>
                 </div>
 

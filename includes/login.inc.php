@@ -30,7 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user'] = [
                 'user_id' => $user['id'],
                 'username' => $user['username'],
-                'email' => $user['email']
+                'email' => $user['email'],
+                'fullname' => $user['fullname'],
+                'phone' => $user['phone'],
             ];
 
             header('Content-Type: application/json');
