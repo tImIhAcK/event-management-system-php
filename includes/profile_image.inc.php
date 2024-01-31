@@ -43,18 +43,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // $img_upload_path = BASE_URL . 'assets/uploads/profile__images' . $new_img_name;
 
     $upload_directory =  BASE_URL . 'uploads/';
+    mkdir($upload_directory);
 
-    if (!is_dir($upload_directory)) {
-        header('Content-Type: application/json');
-        $response = array('data' => array('success' => false, 'message' => 'Folder does not exists'));
-        echo json_encode($response);
-        exit;
-    } else {
-        header('Content-Type: application/json');
-        $response = array('data' => array('success' => true, 'message' => 'Folder exists'));
-        echo json_encode($response);
-        exit;
-    }
+    // if (!is_dir($upload_directory)) {
+    //     header('Content-Type: application/json');
+    //     $response = array('data' => array('success' => false, 'message' => 'Folder does not exists'));
+    //     echo json_encode($response);
+    //     exit;
+    // } else {
+    //     header('Content-Type: application/json');
+    //     $response = array('data' => array('success' => true, 'message' => 'Folder exists'));
+    //     echo json_encode($response);
+    //     exit;
+    // }
 
 
     // if (!is_dir($upload_directory)) {
